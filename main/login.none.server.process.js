@@ -3,9 +3,6 @@ const { BrowserWindow, ipcMain } = require("electron");
 function createloginWindow() {
   const redirectURI = "http://localhost:5000/callback";
   const loginViewPath = "./templates/login.html";
-  const logOutUrl = {
-    urls: ["http://localhost/logout*"],
-  };
   const filter = {
     urls: [`${redirectURI}*`],
   };
@@ -28,7 +25,7 @@ function createloginWindow() {
   webRequest.onBeforeRequest(filter, ({ url }) => {
     win.loadFile(loginViewPath);
     win.webContents.once("did-finish-load", () => {
-      win.webContents.send("store-data", url);
+      win.webContents.send("finishLoad", null, null, url);
     });
   });
 

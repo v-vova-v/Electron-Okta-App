@@ -4,12 +4,6 @@ const form = document.querySelector("form");
 const submitBtn = document.querySelector('form button[type="button"]');
 const runServeCheckbox = document.getElementById("runServer");
 
-runServeCheckbox.addEventListener("click", () => {
-  if (runServeCheckbox.checked) {
-  }
-  //ipcRenderer.send("reloadWin");
-});
-
 submitBtn.addEventListener("click", (e) => {
   if (_IsValidForm()) {
     _storeFormDataInStorage();
